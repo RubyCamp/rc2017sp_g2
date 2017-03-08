@@ -13,5 +13,8 @@ class Map
   def draw
     p @map_data
   end
-
+  
+  def search
+  end
+  
 end
