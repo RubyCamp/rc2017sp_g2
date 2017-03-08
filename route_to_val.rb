@@ -8,7 +8,33 @@
 module ConvertRoute
 	private
 
+	# 数値から2桁の2進数の配列へと変換
+	# 戻り値: Stringオブジェクトの配列
+	def separateBIN(bin)
+		str = []
+		i = 0
+		while bin != 0
+			str[i] = bin % 4
+			bin /= 4
+			i += 1
+		end
+
+		rstr = str.reverse
+
+		binstr = []
+		i = 0
+		for x in rstr
+			binstr[i] = x.to_s(2)
+			binstr[i] = "00" if binstr[i] == "0"
+			binstr[i] = "01" if binstr[i] == "1"
+			i += 1
+		end
+
+		return binstr
+	end
+
 	# 2桁の二進数が格納された配列をつなげて一つの値とする
+	# 戻り値: 整数型の値
 	def margeBIN(strRoute)
 		bin = 0
 
@@ -38,6 +64,9 @@ end
 #### 以下テスト用コード ####
 # include ConvertRoute
 
-# str = ["10", "01", "00", "11", "10", "11"]
+# bin = 202
 
-# p sprintf("%04x", margeBIN(str))
+# p separateBIN(bin)
+# for x in separateBIN(bin)
+# 	p sprintf("%04b", x)
+# end
