@@ -1,8 +1,8 @@
-# require_relative 'dijkstra_search'
-
-module DecideRoute
+require_relative 'map'require_relative 'dijkstra_search'module DecideRoute
 	#マップを受け取って配列に格納する
+map = Map.new
 
+map.draw
 
 
 	#ルートを決定する
