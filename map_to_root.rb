@@ -1,7 +1,9 @@
-require_relative 'dijkstra_search'
-
+require_relative 'map'
+require 'dxruby'
 #マップを受け取って配列に格納する
+map = Map.new
 
+map.draw
 
 
 
