@@ -3,15 +3,18 @@
 # 2017-03-08 (Wed) Kazuki Hiramoto
 #
 ##########
-
+require_relative 'map'
+require 'dxruby'
 
 module DecideRoute
 
+	#マップを受け取って配列に格納する
+	map = Map.new
+
+	map.draw
 
 	#ルートを決定する
-
-
-
+	map.decide_route
 
 
 	# ルートを2bit表現に置き換える(string)

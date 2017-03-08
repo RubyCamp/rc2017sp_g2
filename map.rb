@@ -89,10 +89,28 @@ class Map
 
     route = self.calc_route(current, @goal)
 
-    route
+	 p route
+
+    route.size.times do |line|
+	 	route.swap!(line, 0, line, 1 )	
+	 end
 
     p route
 
   end
 end
 
+# 配列のswap
+class Array
+  def swap!(a, b, c, d)
+    raise ArgumentError unless a.between?(0, self.count-1) && b.between?(0, self.count-1)
+
+    self[a][b], self[c][d] = self[c][d], self[a][b]
+
+    self
+  end
+
+  def swap(a, b, c, d)
+    self.dup.swap!(a, b, c, d)
+  end
+end
