@@ -36,8 +36,8 @@ end
 
 
 #### 以下テスト用コード ####
-include ConvertRoute
+# include ConvertRoute
 
-str = ["10", "01", "00", "11", "10", "11"]
+# str = ["10", "01", "00", "11", "10", "11"]
 
-p sprintf("%04x", margeBIN(str))
+# p sprintf("%04x", margeBIN(str))
