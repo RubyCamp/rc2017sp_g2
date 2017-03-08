@@ -4,7 +4,6 @@
 #
 ########
 
-
 module ConvertRoute
 	private
 
@@ -40,7 +39,7 @@ module ConvertRoute
 
 		for x in convTo2(strRoute)
 			bin += x
-			p sprintf("%08b", bin)
+		#	p sprintf("%08b", bin)
 			bin *= 4
 		end
 		bin /= 4

@@ -89,13 +89,15 @@ class Map
 
     route = self.calc_route(current, @goal)
 
-	 p route
+	 #p route
 
     route.size.times do |line|
 	 	route.swap!(line, 0, line, 1 )	
 	 end
-
-    p route
+	route.shift
+	route << [-2, -2]
+	return route
+    #p route
 
   end
 end

@@ -6,16 +6,8 @@
 require_relative 'map'
 require 'dxruby'
 
+
 module DecideRoute
-
-	#マップを受け取って配列に格納する
-	map = Map.new
-
-	map.draw
-
-	#ルートを決定する
-	map.decide_route
-
 
 	# ルートを2bit表現に置き換える(string)
 	# 引数1: ダイクストラサーチによって得られた座標の繊維を表した配列
@@ -92,7 +84,6 @@ module DecideRoute
 				end
 			end
 
-			p route
 			i += 1
 		end
 
