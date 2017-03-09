@@ -7,6 +7,7 @@ class Map
   WALL = 1
   START = 2
   GOAL = 3
+  POINT = 4
 
 
   def initialize
@@ -29,7 +30,20 @@ class Map
     g = Graph.new(make_data)
     start_id = "m#{start[0]}_#{start[1]}"
     goal_id = "m#{self.goal[0]}_#{self.goal[1]}"
+
+    @map_data[self.goal[1]][self.goal[0]] = GOAL
+    p @map_data
     g.get_route(start_id, goal_id)
+  end
+
+
+  def calc_point_route(start, point)
+    @map_data[self.goal[1]][self.goal[0]] = WALL
+    g = Graph.new(make_data)
+    start_id = "m#{start[0]}_#{start[1]}"
+    point_id = "m#{self.point[0]}_#{self.point[1]}"
+    p @map_data
+    g.get_route(start_id, point_id)
   end
 
   # 任意の座標x, y におけるマップチップの種類を取得
@@ -71,6 +85,16 @@ class Map
   end
 
 
+  # ポイント地点の座標
+  def point
+    return @point if @point
+    point_y = @map_data.index{|map_x| map_x.include?(POINT) }
+    point_x = @map_data[point_y].index(POINT)
+    @point = [point_x, point_y]
+    return @point 
+  end
+
+
   # ゴール地点の座標
   def goal
     return @goal if @goal
@@ -81,26 +105,24 @@ class Map
   end
 
 
+
   def decide_route
-
-
     current=[0,0]
     route=[]
-
-    route = self.calc_route(current, @goal)
-
-	 #p route
-
+    route = self.calc_route(current, @point)
+    route += self.calc_route(@point, @goal)
+    #p route
     route.size.times do |line|
-	 	route.swap!(line, 0, line, 1 )	
-	 end
-	route.shift
-	route << [-2, -2]
-	return route
+      route.swap!(line, 0, line, 1 )	
+    end
+    route.shift
+    route << [-2, -2]
+    return route
     #p route
 
   end
 end
+
 
 # 配列のswap
 class Array
