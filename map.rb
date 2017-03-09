@@ -23,7 +23,7 @@ class Map
 
   #表示させる
   def draw
-    p @map_data
+    #p @map_data
   end
 
   def calc_route(start, goal)
@@ -32,7 +32,7 @@ class Map
     goal_id = "m#{self.goal[0]}_#{self.goal[1]}"
 
     @map_data[self.goal[1]][self.goal[0]] = GOAL
-    p @map_data
+    #p @map_data
     g.get_route(start_id, goal_id)
   end
 
@@ -42,7 +42,7 @@ class Map
     g = Graph.new(make_data)
     start_id = "m#{start[0]}_#{start[1]}"
     point_id = "m#{self.point[0]}_#{self.point[1]}"
-    p @map_data
+    #p @map_data
     g.get_route(start_id, point_id)
   end
 
@@ -109,16 +109,15 @@ class Map
   def decide_route
     current=[0,0]
     route=[]
-    route = self.calc_route(current, @point)
+    route = self.calc_point_route(current, @point)
     route += self.calc_route(@point, @goal)
     #p route
     route.size.times do |line|
       route.swap!(line, 0, line, 1 )	
     end
-    route.shift
     route << [-2, -2]
-    return route
     #p route
+    return route
 
   end
 end
