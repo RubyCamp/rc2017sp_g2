@@ -41,7 +41,7 @@ begin
 
   Window.loop do
     break if Input.keyDown?(K_SPACE)
-    player.set_array(bin)
+    player.set_array(bin[0])
     player.run
     Window.draw_font(100, 200, "#{player.distance.to_i}cm", font)
   end

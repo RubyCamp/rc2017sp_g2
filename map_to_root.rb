@@ -13,12 +13,14 @@ module DecideRoute
 	# 引数1: ダイクストラサーチによって得られた座標の繊維を表した配列
 	# 戻り値: 文字列配列
 	def decideRoute(r_next)
-		tmp_next = decideNext(r_next)
+	 	item_distance = r_next.dup.pop
+		tmp_next = decideNext(r_next.dup)
 		tmp_current = decideCurrent(tmp_next)
 		tmp_dir = decideDirection(tmp_next, tmp_current)
 
 		route = []
 		i = 0
+		j = 0
 
 		for x in tmp_next
 			y = tmp_current[i]
@@ -29,29 +31,37 @@ module DecideRoute
 					if z == "00" # 現在上を向いている
 						route.push("10")
 						route.push("00")
+						j += 2
 					elsif z == "01" # 現在下を向いている
 						route.push("11")
 						route.push("00")
+       				j += 2
 					elsif z == "10" # 現在右を向いている
 						route.push("00")
+       				j += 1
 					elsif z == "11" # 現在左を向いている
 						route.push("10")
 						route.push("10")
 						route.push("00")
+       				j += 3
 					end
 				elsif x[1] == y[1] - 1 # 現在の座標から見て左方向に行きたい
 					if z == "00" # 現在上を向いている
 						route.push("11")
 						route.push("00")
+       				j += 2
 					elsif z == "01" # 現在下を向いている
 						route.push("10")
 						route.push("00")
+       				j += 2
 					elsif z == "10" # 現在右を向いている
 						route.push("10")
 						route.push("10")
 						route.push("00")
+       				j += 3
 					elsif z == "11" # 現在左を向いている
 						route.push("00")
+       				j += 1
 					end
 				end
 			elsif x[0] == y[0] + 1 # 現在の座標から見て下方向に行きたい
@@ -59,33 +69,46 @@ module DecideRoute
 					route.push("10")
 					route.push("10")
 					route.push("00")
+       			j += 3
 				elsif z == "01" # 現在下を向いている
 					route.push("00")
+       			j += 1
 				elsif z == "10" # 現在右を向いている
 					route.push("10")
 					route.push("00")
+       			j += 2
 				elsif z == "11" # 現在左を向いている
 					route.push("11")
 					route.push("00")
+       			j += 2
 				end
 			elsif x[0] == y[0] - 1 # 現在の座標から見て上方向に行きたい
 				if z == "00" # 現在上を向いている
 					route.push("00")
+       			j += 2
 				elsif z == "01" # 現在下を向いている
 					route.push("10")
 					route.push("10")
 					route.push("00")
+       			j += 3
 				elsif z == "10" # 現在右を向いている
 					route.push("11")
 					route.push("00")
+       			j += 2
 				elsif z == "11" # 現在左を向いている
 					route.push("10")
 					route.push("00")
+       			j += 2
 				end
+				
 			end
-
-			i += 1
+				i += 1
+			#	p "i = #{i}"
+			#	p "j = #{j}" 
+				moved_to_item = j if i == item_distance - 1
 		end
+
+		route << moved_to_item
 
 		return route
 	end
