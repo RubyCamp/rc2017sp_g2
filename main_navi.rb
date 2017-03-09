@@ -27,7 +27,6 @@ p val.to_s(16)
 begin
   threads = []
   sender = Communicator::Sender.new
-  receiver = Communicator::Receiver.new
 
   threads << Thread.start do
     message = val.to_s(16)
@@ -35,24 +34,7 @@ begin
     sender.send(message)
   end
 
-  threads << Thread.start do
-    signals = receiver.receive
-    message = receiver.get_message(signals)
-    puts "receive: #{message}"
-  end
-
   threads.each{|t| t.join }
 ensure
   sender.disconnect
-  receiver.disconnect
 end
-
-#3/8までにここまで
-
-
-#復号する(記号化の逆)
-
-
-#実行する(B)
-
-
