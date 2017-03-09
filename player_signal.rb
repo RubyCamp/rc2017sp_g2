@@ -5,7 +5,7 @@ class Player
   LEFT_MOTOR = "B"
   RIGHT_MOTOR = "C"
   DISTANCE_SENSOR = "1"
-  PORT = "COM10"
+  PORT = "COM12"
   WHEEL_SPEED = 20
 
   attr_reader :distance
