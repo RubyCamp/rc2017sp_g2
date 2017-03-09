@@ -77,7 +77,7 @@ module Communicator
 
   class Receiver
     DISTANCE_SENSOR = "1"
-    PORT = "COM10"
+    PORT = "COM8"
     LIMIT = UNIT * 8
 
     def initialize

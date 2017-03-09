@@ -10,9 +10,12 @@ include DecideRoute
 include ConvertRoute
 include Communicator
 
+Window.width   = 800
+Window.height  = 600
+
 #•œ†‚·‚é(‹L†‰»‚Ì‹t)
-#message = ""
-begin
+@message = "2830c8ccd"
+=begin
   threads = []
   receiver = Communicator::Receiver.new
 
@@ -25,7 +28,7 @@ begin
   threads.each{|t| t.join }
 ensure
   receiver.disconnect
-end
+=end
 
 sleep 5.0
 #message = ["10", "10", "00", "11", "00", "00", "00", "10", "00", "10", "00"]
@@ -33,11 +36,17 @@ sleep 5.0
 bin = separateBIN(@message.to_i(16))
 
 visualizer = Visualizer.new()
+p bin[0].size
+p bin[1]
+
+firstSize = bin[0].size
+currentStep = 0
 
 #ŽÀs‚·‚é(B)
 begin
   puts "starting..."
   font = Font.new(32)
+
   player = Player.new
   puts "connected"
 
@@ -45,8 +54,11 @@ begin
     break if Input.keyDown?(K_SPACE)
     player.set_array(bin[0])
     player.run
-    visualizer.update()
-    Window.draw_font(100, 200, "#{player.distance.to_i}cm", font)
+    currentStep = firstSize - bin[0].size
+    visualizer.update(bin[0][0],currentStep,firstSize,bin[1])
+    #Window.draw_font(0, 0, "#{player.distance.to_i}cm", font)
+    #Window.draw_font(0, 0, "#{bin[0][0]}", font,:color=>[0,0,0])
+    
   end
 rescue Exception => e
   p e

@@ -5,7 +5,7 @@ class Player
   LEFT_MOTOR = "B"
   RIGHT_MOTOR = "C"
   DISTANCE_SENSOR = "1"
-  PORT = "COM10"
+  PORT = "COM8"
   WHEEL_SPEED = 20
 
   attr_reader :distance
@@ -27,7 +27,7 @@ class Player
   # ëOêi
   def run_forward(speed=WHEEL_SPEED)
     operate do
-      @brick.step_velocity(speed, 280, 40, *wheel_motors)
+      @brick.step_velocity(speed, 290, 40, *wheel_motors)
       @brick.motor_ready(*wheel_motors)
     end
   end
@@ -45,7 +45,7 @@ class Player
   def turn_right(speed=WHEEL_SPEED)
     operate do
       @brick.reverse_polarity(RIGHT_MOTOR)
-      @brick.step_velocity(speed, 135, 60, *wheel_motors)
+      @brick.step_velocity(speed, 137, 60, *wheel_motors)
       @brick.motor_ready(*wheel_motors)
     end  
   end
@@ -54,7 +54,7 @@ class Player
   def turn_left(speed=WHEEL_SPEED)
     operate do
       @brick.reverse_polarity(LEFT_MOTOR)
-      @brick.step_velocity(speed, 135, 60, *wheel_motors)
+      @brick.step_velocity(speed, 137, 60, *wheel_motors)
       @brick.motor_ready(*wheel_motors)
     end
   end
