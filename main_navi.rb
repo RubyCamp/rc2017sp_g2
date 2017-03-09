@@ -17,14 +17,14 @@ map = Map.new
 
 #ルートを決定する
 route = map.decide_route
-
+#p route
 #記号化する
 ary = decideRoute(route)
-p ary
+#p ary
 val = margeBIN(ary)
-p val.to_s(16)
+#p val.to_s(16)
 #送信する(sample3を流用)
-begin
+=begin
   threads = []
   sender = Communicator::Sender.new
 
@@ -37,4 +37,4 @@ begin
   threads.each{|t| t.join }
 ensure
   sender.disconnect
-end
+=end

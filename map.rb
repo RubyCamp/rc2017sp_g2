@@ -110,12 +110,15 @@ class Map
     current=[0,0]
     route=[]
     route = self.calc_point_route(current, @point)
+	 item_distance = route.size
     route += self.calc_route(@point, @goal)
     #p route
     route.size.times do |line|
       route.swap!(line, 0, line, 1 )	
     end
+	 route.shift
     route << [-2, -2]
+	 route << item_distance
     #p route
     return route
 

@@ -10,14 +10,18 @@ module ConvertRoute
 	# 数値から2桁の2進数の配列へと変換
 	# 戻り値: Stringオブジェクトの配列
 	def separateBIN(bin)
+		item_distance = bin % 16
+		bin /= 16
 		str = []
 		i = 0
+
 		while bin != 0
 			str[i] = bin % 4
 			bin /= 4
 			i += 1
 		end
-
+p str
+p item_distance
 		rstr = str.reverse
 
 		binstr = []
@@ -29,12 +33,13 @@ module ConvertRoute
 			i += 1
 		end
 
-		return binstr
+		return [binstr, item_distance]
 	end
 
 	# 2桁の二進数が格納された配列をつなげて一つの値とする
 	# 戻り値: 整数型の値
 	def margeBIN(strRoute)
+		item_distance = strRoute.pop
 		bin = 0
 
 		for x in convTo2(strRoute)
@@ -42,7 +47,9 @@ module ConvertRoute
 		#	p sprintf("%08b", bin)
 			bin *= 4
 		end
-		bin /= 4
+		bin *= 4
+		bin += item_distance
+p bin.to_s(16)
 
 		return bin
 	end
