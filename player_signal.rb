@@ -5,8 +5,7 @@ class Player
   LEFT_MOTOR = "B"
   RIGHT_MOTOR = "C"
   DISTANCE_SENSOR = "1"
-  PORT = "COM8"
-  WHEEL_SPEED = 20
+  PORT = "COM10"  WHEEL_SPEED = 20
 
   attr_reader :distance
 
@@ -89,6 +88,7 @@ class Player
   # センサー情報の更新
   def update
     @distance = @brick.get_sensor(DISTANCE_SENSOR, 0)
+	
   end
 
   # 動きを止める

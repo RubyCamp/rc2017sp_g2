@@ -24,7 +24,7 @@ ary = decideRoute(route)
 val = margeBIN(ary)
 #p val.to_s(16)
 #送信する(sample3を流用)
-=begin
+begin
   threads = []
   sender = Communicator::Sender.new
 
@@ -37,4 +37,4 @@ val = margeBIN(ary)
   threads.each{|t| t.join }
 ensure
   sender.disconnect
-=end
+end
