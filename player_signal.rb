@@ -5,7 +5,7 @@ class Player
   LEFT_MOTOR = "B"
   RIGHT_MOTOR = "C"
   DISTANCE_SENSOR = "1"
-  PORT = "COM12"
+  PORT = "COM10"
   WHEEL_SPEED = 20
 
   attr_reader :distance
@@ -15,9 +15,13 @@ class Player
     @brick.connect
     @busy = false
     @grabbing = false
-    @array = ["10", "10", "00", "11", "00", "00", "00", "10", "00", "10", "00"]
+#    set_array = ["10", "10", "00", "11", "00", "00", "00", "10", "00", "10", "00"]
     #@array = ["10", "10", "00", "00", "11", "00", "11", "00", "00", "10", "00", "10", "00", "00" "11", "00", "11", "00", "00"]
 
+  end
+
+  def set_array(ary)
+    @array = ary
   end
 
   # 前進
@@ -116,28 +120,9 @@ class Player
   end
 end
 
-begin
-  puts "starting..."
-  font = Font.new(32)
-  player = Player.new
-  puts "connected"
 
-  Window.loop do
-    break if Input.keyDown?(K_SPACE)
-    player.run
-    Window.draw_font(100, 200, "#{player.distance.to_i}cm", font)
-  end
-rescue Exception => e
-  p e
-  e.backtrace.each{|trace| puts trace}
-# 終了処理は必ず実行する
-ensure
-  puts "closing..."
-  player.close
-  puts "finished"
-end
    
-
+=begin
 array = ["10", "00", "00", "00", "10", "00", "00", "10", "00"]
 player = Player.new
   print(array.size)
@@ -166,3 +151,4 @@ for i in 0..(array.size-1) do
   i = i + 1
 
 end
+=end

@@ -1,4 +1,5 @@
-﻿require 'dxruby'
+﻿=begin
+require 'dxruby'
 require_relative 'ev3/ev3'
 
 class Player
@@ -130,3 +131,4 @@ ensure
   player.close
   puts "finished"
 end
+=end
