@@ -14,8 +14,9 @@ Window.width   = 800
 Window.height  = 600
 
 #復号する(記号化の逆)
-@message = "2830c8ccd"
-=begin
+#@message = "2830c8ccd" #テスト用メッセージ
+@message = ""
+begin
   threads = []
   receiver = Communicator::Receiver.new
 
@@ -28,7 +29,7 @@ Window.height  = 600
   threads.each{|t| t.join }
 ensure
   receiver.disconnect
-=end
+end
 
 sleep 5.0
 #message = ["10", "10", "00", "11", "00", "00", "00", "10", "00", "10", "00"]
