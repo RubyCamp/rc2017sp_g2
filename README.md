@@ -47,3 +47,21 @@
 	配列に格納して先出しした順番がそのままルートとなる
 
 	例) ルートが"上, 下, 右, 下"の場合"[00, 01, 10, 01]"と配列に格納される
+
+![2-1](https://github.com/RubyCamp/rc2017sp_g2/wiki/images/2-1.JPG)
+
+![2-2](https://github.com/RubyCamp/rc2017sp_g2/wiki/images/2-2.JPG)
+
+![2-3](https://github.com/RubyCamp/rc2017sp_g2/wiki/images/2-3.JPG)
+
+![2-4](https://github.com/RubyCamp/rc2017sp_g2/wiki/images/2-4.JPG)
+
+![2-5](https://github.com/RubyCamp/rc2017sp_g2/wiki/images/2-5.JPG)
+
+![2-6](https://github.com/RubyCamp/rc2017sp_g2/wiki/images/2-6.JPG)
+
+![2-7](https://github.com/RubyCamp/rc2017sp_g2/wiki/images/2-7.JPG)
+
+![2-8](https://github.com/RubyCamp/rc2017sp_g2/wiki/images/2-8.JPG)
+
+![field](https://github.com/RubyCamp/rc2017sp_g2/wiki/images/Field.JPG)
